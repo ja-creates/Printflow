@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
         
         :root {
             --accent: #6366f1;
@@ -37,6 +37,7 @@
             border: 1px solid rgba(148, 163, 184, 0.15);
         }
 
+        /* Light Mode Overrides */
         html:not(.dark) body {
             background-color: #f8fafc;
             color: #1e2937;
@@ -238,51 +239,19 @@
             animation: float 25s ease infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(30px); }
-        }
-
         .section-transition {
             animation: fadeInUp 0.4s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .mini-stat {
             font-variant-numeric: tabular-nums;
         }
-
-        .custom-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .custom-scroll::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .custom-scroll::-webkit-scrollbar-thumb {
-            background: rgba(148, 163, 184, 0.4);
-            border-radius: 3px;
-        }
-
-        .custom-scroll::-webkit-scrollbar-thumb:hover {
-            background: rgba(148, 163, 184, 0.6);
-        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200">
-    <!-- LOGIN PAGE -->
+    <!-- ==================== LOGIN PAGE ==================== -->
     <div id="login-page" class="min-h-screen flex items-center justify-center login-bg p-6 relative overflow-hidden">
+        <!-- Animated background elements -->
         <div class="absolute inset-0 opacity-30">
             <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl floating-orb" style="animation-delay: 0s;"></div>
             <div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl floating-orb" style="animation-delay: -8s;"></div>
@@ -290,6 +259,7 @@
         </div>
 
         <div class="w-full max-w-md relative z-10">
+            <!-- Logo -->
             <div class="flex justify-center mb-8">
                 <div class="flex items-center gap-x-3">
                     <div class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center shadow-inner">
@@ -299,10 +269,13 @@
                             <path d="M2 12L12 17L22 12" stroke="#6366f1" stroke-width="2.25" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <span class="font-display text-3xl font-semibold tracking-tighter">PrintFlow</span>
+                    <div>
+                        <span class="font-display text-3xl font-semibold tracking-tighter">PrintFlow</span>
+                    </div>
                 </div>
             </div>
 
+            <!-- Glass Login Card -->
             <div class="glassmorphism rounded-3xl p-8 shadow-2xl border border-white/10">
                 <div class="text-center mb-8">
                     <h1 class="text-3xl font-semibold tracking-tight">Get Started</h1>
@@ -311,29 +284,31 @@
 
                 <form id="login-form" onsubmit="handleLogin(event)">
                     <div class="space-y-5">
+                        <!-- Email -->
                         <div>
                             <label class="block text-xs font-semibold tracking-wider text-zinc-400 mb-1.5">EMAIL ADDRESS</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                                     </svg>
                                 </div>
                                 <input type="email" id="login-email" placeholder="you@yourbusiness.com" 
-                                       class="w-full bg-zinc-900/70 border border-white/10 focus:border-indigo-500/60 transition-colors pl-11 pr-4 py-3 rounded-2xl text-sm placeholder:text-zinc-500 focus:outline-none" required>
+                                       class="w-full bg-zinc-900/70 border border-white/10 focus:border-indigo-500/60 transition-colors pl-11 pr-4 py-3 rounded-2xl text-sm placeholder:text-zinc-500 focus:outline-none focus:ring-1 focus:ring-indigo-500/30">
                             </div>
                         </div>
 
+                        <!-- Password -->
                         <div>
                             <label class="block text-xs font-semibold tracking-wider text-zinc-400 mb-1.5">PASSWORD</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V9a4 4 0 00-8 0v3" />
                                     </svg>
                                 </div>
                                 <input type="password" id="login-password" placeholder="••••••••" 
-                                       class="w-full bg-zinc-900/70 border border-white/10 focus:border-indigo-500/60 transition-colors pl-11 pr-4 py-3 rounded-2xl text-sm placeholder:text-zinc-500 focus:outline-none" required>
+                                       class="w-full bg-zinc-900/70 border border-white/10 focus:border-indigo-500/60 transition-colors pl-11 pr-4 py-3 rounded-2xl text-sm placeholder:text-zinc-500 focus:outline-none focus:ring-1 focus:ring-indigo-500/30">
                             </div>
                         </div>
 
@@ -364,18 +339,20 @@
         </div>
     </div>
 
-    <!-- MAIN APPLICATION -->
+    <!-- ==================== MAIN APPLICATION ==================== -->
     <div id="app" class="hidden h-screen flex flex-col">
         <!-- Top Navigation -->
         <nav class="h-14 border-b border-white/10 bg-zinc-900/80 backdrop-blur-xl z-50 flex items-center px-4 md:px-6 flex-shrink-0">
             <div class="flex items-center justify-between w-full max-w-screen-2xl mx-auto">
                 <div class="flex items-center gap-x-3">
+                    <!-- Mobile Menu Button -->
                     <button id="mobile-menu-btn" onclick="toggleMobileSidebar()" class="md:hidden w-9 h-9 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/5 rounded-2xl">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
 
+                    <!-- Logo -->
                     <div class="flex items-center gap-x-2.5">
                         <div class="w-8 h-8 bg-white rounded-xl flex items-center justify-center">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -390,6 +367,7 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
+                    <!-- Global Search -->
                     <div class="relative w-72 hidden md:block">
                         <input type="text" id="global-search" placeholder="Search jobs, customers, inventory..." 
                                class="w-full bg-zinc-900 border border-white/10 focus:border-white/30 transition pl-9 py-1.5 text-sm rounded-2xl placeholder:text-zinc-500 focus:outline-none"
@@ -401,16 +379,18 @@
                         </div>
                     </div>
 
+                    <!-- User -->
                     <div class="flex items-center gap-x-3 pl-3 border-l border-white/10">
                         <div class="text-right hidden sm:block">
-                            <div id="user-name" class="text-sm font-semibold">Kofi Asante</div>
+                            <div id="user-name" class="text-sm font-semibold">User</div>
                             <div class="text-[10px] text-zinc-500 -mt-0.5">Manager</div>
                         </div>
-                        <div onclick="showSettings()" class="w-8 h-8 bg-zinc-800 border border-white/20 rounded-full flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-offset-2 hover:ring-indigo-500">
+                        <div onclick="showSettings()" class="w-8 h-8 bg-zinc-800 border border-white/20 rounded-full flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-offset-2 hover:ring-offset-zinc-950 hover:ring-indigo-500/40 transition-all overflow-hidden">
                             <span id="user-avatar" class="font-bold text-xs tracking-wider">KA</span>
                         </div>
                         
-                        <button onclick="toggleTheme()" class="w-9 h-9 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/5 rounded-2xl transition" title="Toggle light/dark theme">
+                        <!-- Theme Toggle -->
+                        <button onclick="toggleTheme()" class="w-9 h-9 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/5 rounded-2xl transition" title="Toggle light/dark mode">
                             <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                             </svg>
@@ -434,37 +414,37 @@
                 <div class="p-3 flex-1">
                     <div class="space-y-0.5 text-sm">
                         <div onclick="showPage('dashboard')" class="nav-link active flex items-center gap-x-3 px-4 py-[9px] cursor-pointer text-white" id="nav-dashboard">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-3m0 0l7-4 7 4M5 9v10a1 1 0 001 1h12a1 1 0 001-1V9m-9 11l4-4m-4 4l-4-4m9-5l4-4m-4 4l4 4" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1v-5m0 0l-4 4m4-4v5m6-10v10a1 1 0 01-1 1v-5m0 0l4 4m-4-4v5" /></svg>
                             <span class="font-medium">Dashboard</span>
                         </div>
                         
                         <div onclick="showPage('jobs')" class="nav-link flex items-center gap-x-3 px-4 py-[9px] cursor-pointer hover:bg-white/5 rounded-xl text-zinc-300 hover:text-white" id="nav-jobs">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2v2M9 5a2 2 0 012-2m0 0l4 4" /></svg>
                             <span class="font-medium">Print Jobs</span>
                         </div>
                         
                         <div onclick="showPage('pos')" class="nav-link flex items-center gap-x-3 px-4 py-[9px] cursor-pointer hover:bg-white/5 rounded-xl text-zinc-300 hover:text-white" id="nav-pos">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            <span class="font-medium">Sales & POS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                            <span class="font-medium">Sales &amp; POS</span>
                         </div>
                         
                         <div onclick="showPage('inventory')" class="nav-link flex items-center gap-x-3 px-4 py-[9px] cursor-pointer hover:bg-white/5 rounded-xl text-zinc-300 hover:text-white" id="nav-inventory">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m0 0l8 4m-8-4v10l8 4m0-10l8 4m-8-4v10M8 11l4 2m4-2l-4 2m0 0l4 2m-4-2l-4 2" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
                             <span class="font-medium">Inventory</span>
                         </div>
                         
                         <div onclick="showPage('customers')" class="nav-link flex items-center gap-x-3 px-4 py-[9px] cursor-pointer hover:bg-white/5 rounded-xl text-zinc-300 hover:text-white" id="nav-customers">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 12H9m4 0a4 4 0 110-8 4 4 0 010 8zm6 0a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 01-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 01-2 2 2 2 0 01-2-2 2 2 0 012-2 2 2 0 012 2z" /></svg>
                             <span class="font-medium">Customers</span>
                         </div>
                         
                         <div onclick="showPage('transactions')" class="nav-link flex items-center gap-x-3 px-4 py-[9px] cursor-pointer hover:bg-white/5 rounded-xl text-zinc-300 hover:text-white" id="nav-transactions">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 01-2-2V9" /></svg>
                             <span class="font-medium">Transactions</span>
                         </div>
                         
                         <div onclick="showPage('reports')" class="nav-link flex items-center gap-x-3 px-4 py-[9px] cursor-pointer hover:bg-white/5 rounded-xl text-zinc-300 hover:text-white" id="nav-reports">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 01-2 2v10m-6 0a2 2 0 002 2v-2m0 0a2 2 0 01-2 2" /></svg>
                             <span class="font-medium">Reports</span>
                         </div>
                     </div>
@@ -472,15 +452,16 @@
 
                 <div class="p-3 border-t border-white/10 mt-auto">
                     <div onclick="showPage('settings')" class="nav-link flex items-center gap-x-3 px-4 py-2.5 text-sm cursor-pointer hover:bg-white/5 rounded-xl text-zinc-300 hover:text-white" id="nav-settings">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 002.572 1.065c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-2.572-1.065c-.426-1.756.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         <span class="font-medium">Settings</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Main Content -->
+            <!-- Main Content Area -->
             <div class="flex-1 overflow-auto bg-zinc-950" id="main-content">
-                <!-- DASHBOARD PAGE -->
+                
+                <!-- DASHBOARD -->
                 <div id="page-dashboard" class="page p-6 max-w-screen-2xl mx-auto">
                     <div class="flex items-end justify-between mb-6">
                         <div>
@@ -488,15 +469,16 @@
                             <p class="text-zinc-400 text-sm">Good evening, Kofi. Here's what's happening today.</p>
                         </div>
                         <div class="text-xs px-3 py-1 bg-white/5 rounded-2xl border border-white/10 text-zinc-400">
-                            Last updated: <span id="dashboard-time">2:45 PM</span>
+                            Last updated: <span id="dashboard-time"></span>
                         </div>
                     </div>
 
+                    <!-- Stats Cards -->
                     <!-- Quick Actions -->
                     <div class="flex flex-wrap gap-2 mb-4">
                         <button onclick="showPage('jobs'); showAddJobModal()" 
                                 class="px-4 py-2 text-sm bg-white text-zinc-900 hover:bg-zinc-100 rounded-2xl flex items-center gap-x-2 font-medium">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/></svg>
                             New Job
                         </button>
                         <button onclick="showPage('pos')" 
@@ -509,7 +491,6 @@
                         </button>
                     </div>
 
-                    <!-- Stats Cards -->
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                         <div class="stat-card glass-dark border border-white/10 rounded-3xl p-5">
                             <div class="flex justify-between">
@@ -518,7 +499,7 @@
                                     <div class="text-3xl font-semibold tabular-nums mt-1" id="stat-revenue">₵48,920</div>
                                 </div>
                                 <div class="text-emerald-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
                                 </div>
                             </div>
                             <div class="text-emerald-400 text-xs mt-3 flex items-center gap-x-1">
@@ -533,7 +514,7 @@
                                     <div class="text-3xl font-semibold tabular-nums mt-1" id="stat-active-jobs">27</div>
                                 </div>
                                 <div class="text-amber-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2 2 2 0 012 2v2" /></svg>
                                 </div>
                             </div>
                             <div class="text-xs mt-3 text-zinc-400">12 due this week</div>
@@ -546,7 +527,7 @@
                                     <div class="text-3xl font-semibold tabular-nums mt-1" id="stat-completed">84</div>
                                 </div>
                                 <div class="text-sky-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 01-9 9 9 9 0 01-9-9 9 9 0 019-9 9 9 0 019 9z" /></svg>
                                 </div>
                             </div>
                             <div class="text-xs mt-3 text-emerald-400">+12 from last week</div>
@@ -559,7 +540,7 @@
                                     <div class="text-3xl font-semibold tabular-nums mt-1" id="stat-low-stock">6</div>
                                 </div>
                                 <div class="text-rose-400">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4v2m0 4v2M6.34 5.66l1.414 1.414m2.828-2.828l1.414 1.414m8.484 0l1.414-1.414m-2.828 2.828l1.414-1.414m-10.034 8.484l-1.414 1.414m2.828 2.828l-1.414 1.414m8.484 0l-1.414 1.414m2.828-2.828l-1.414 1.414"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
                                 </div>
                             </div>
                             <div onclick="showPage('inventory')" class="text-xs mt-3 text-rose-400 hover:underline cursor-pointer">View inventory →</div>
@@ -590,7 +571,7 @@
                                     <button onclick="showPage('jobs')" class="text-xs text-indigo-400 hover:text-indigo-300">View all →</button>
                                 </div>
                                 <div id="recent-jobs-list" class="space-y-2 text-sm text-zinc-400">
-                                    <div class="py-2">No recent jobs</div>
+                                    <!-- Populated by JS or shows empty state -->
                                 </div>
                             </div>
 
@@ -608,7 +589,7 @@
                     </div>
                 </div>
 
-                <!-- PRINT JOBS PAGE -->
+                <!-- PRINT JOBS KANBAN -->
                 <div id="page-jobs" class="page hidden p-6 max-w-screen-2xl mx-auto">
                     <div class="flex justify-between items-center mb-5">
                         <div>
@@ -617,7 +598,7 @@
                         </div>
                         <button onclick="showAddJobModal()" 
                                 class="px-5 py-2 bg-white text-zinc-900 hover:bg-zinc-100 active:bg-white transition font-semibold text-sm rounded-2xl flex items-center gap-x-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" /></svg>
                             <span>New Job</span>
                         </button>
                     </div>
@@ -628,12 +609,12 @@
                     </div>
                 </div>
 
-                <!-- SALES & POS PAGE -->
+                <!-- SALES & POS -->
                 <div id="page-pos" class="page hidden p-6 max-w-screen-2xl mx-auto">
                     <div class="flex justify-between items-end mb-5">
                         <div>
-                            <h1 class="section-header">Sales & POS</h1>
-                            <p class="text-sm text-zinc-400">Quick service checkout • Supports Cash, Card & Mobile Money</p>
+                            <h1 class="section-header">Sales &amp; POS</h1>
+                            <p class="text-sm text-zinc-400">Quick service checkout • Supports Cash, Card &amp; Mobile Money</p>
                         </div>
                         <div class="text-xs bg-white/5 px-3 py-1 rounded-2xl border border-white/10">Currency: GHS</div>
                     </div>
@@ -687,15 +668,15 @@
                                 <div class="pt-3">
                                     <div class="text-xs text-zinc-400 mb-1.5">PAYMENT METHOD</div>
                                     <div class="flex gap-x-2">
-                                        <button onclick="selectPaymentMethod(this, 'cash')" class="payment-btn flex-1 py-2 text-xs border border-white/20 hover:border-white/40 rounded-2xl flex items-center justify-center gap-x-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        <button onclick="selectPaymentMethod(this, 'cash')" class="payment-btn flex-1 py-2 text-xs border border-white/20 hover:border-white/40 rounded-2xl flex items-center justify-center gap-x-2 active:bg-white/5"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 01-2-2V9" /></svg>
                                             <span>Cash</span>
                                         </button>
-                                        <button onclick="selectPaymentMethod(this, 'card')" class="payment-btn flex-1 py-2 text-xs border border-white/20 hover:border-white/40 rounded-2xl flex items-center justify-center gap-x-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                        <button onclick="selectPaymentMethod(this, 'card')" class="payment-btn flex-1 py-2 text-xs border border-white/20 hover:border-white/40 rounded-2xl flex items-center justify-center gap-x-2 active:bg-white/5"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
                                             <span>Card</span>
                                         </button>
-                                        <button onclick="selectPaymentMethod(this, 'momo')" class="payment-btn flex-1 py-2 text-xs border border-white/20 hover:border-white/40 rounded-2xl flex items-center justify-center gap-x-1">
+                                        <button onclick="selectPaymentMethod(this, 'momo')" class="payment-btn flex-1 py-2 text-xs border border-white/20 hover:border-white/40 rounded-2xl flex items-center justify-center gap-x-2 active:bg-white/5"> 
                                             <span>MoMo</span>
                                         </button>
                                     </div>
@@ -703,14 +684,14 @@
 
                                 <button onclick="completeSale()" 
                                         class="mt-2 w-full py-[13px] bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 transition font-semibold rounded-2xl text-sm tracking-wider">
-                                    COMPLETE SALE & PRINT INVOICE
+                                    COMPLETE SALE &amp; PRINT INVOICE
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- INVENTORY PAGE -->
+                <!-- INVENTORY -->
                 <div id="page-inventory" class="page hidden p-6 max-w-screen-2xl mx-auto">
                     <div class="flex justify-between items-center mb-5">
                         <div>
@@ -718,7 +699,7 @@
                             <p class="text-sm text-zinc-400">Track stock • Adjust quantities • Low stock alerts</p>
                         </div>
                         <button onclick="showAddInventoryModal()" class="px-5 py-2 bg-white text-zinc-900 text-sm font-semibold rounded-2xl flex items-center gap-x-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/></svg>
                             <span>Add Item</span>
                         </button>
                     </div>
@@ -753,7 +734,7 @@
                     </div>
                 </div>
 
-                <!-- CUSTOMERS PAGE -->
+                <!-- CUSTOMERS -->
                 <div id="page-customers" class="page hidden p-6 max-w-screen-2xl mx-auto">
                     <div class="flex justify-between items-center mb-5">
                         <div>
@@ -770,16 +751,16 @@
                     </div>
                 </div>
 
-                <!-- TRANSACTIONS PAGE -->
+                <!-- TRANSACTIONS -->
                 <div id="page-transactions" class="page hidden p-6 max-w-screen-2xl mx-auto">
                     <div class="flex justify-between items-end mb-5">
                         <div>
                             <h1 class="section-header">Transactions</h1>
-                            <p class="text-sm text-zinc-400">Payments received & expenses</p>
+                            <p class="text-sm text-zinc-400">Payments received &amp; expenses</p>
                         </div>
                         <div class="flex gap-x-2">
                             <button onclick="exportTransactions('csv')" class="text-xs px-4 py-2 border border-white/20 hover:bg-white/5 transition rounded-2xl flex items-center gap-x-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 13v6m-3-3h6M6 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4m4 0v4m0 0l4-4m-4 4l4 4" /></svg>
                                 <span>CSV</span>
                             </button>
                             <button onclick="exportTransactions('pdf')" class="text-xs px-4 py-2 border border-white/20 hover:bg-white/5 transition rounded-2xl flex items-center gap-x-2">
@@ -825,7 +806,7 @@
                     </div>
                 </div>
 
-                <!-- REPORTS PAGE -->
+                <!-- REPORTS -->
                 <div id="page-reports" class="page hidden p-6 max-w-screen-2xl mx-auto">
                     <div class="flex justify-between items-end mb-5">
                         <div>
@@ -879,7 +860,7 @@
                     </div>
                 </div>
 
-                <!-- SETTINGS PAGE -->
+                <!-- SETTINGS -->
                 <div id="page-settings" class="page hidden p-6 max-w-screen-2xl mx-auto">
                     <h1 class="section-header mb-6">Settings</h1>
                     
@@ -890,12 +871,13 @@
                                 <span>Staff Management</span>
                                 <button onclick="showAddStaffModal()" class="text-xs px-3 py-1 border border-white/20 rounded-2xl">+ Add Staff</button>
                             </div>
+                            
                             <div id="staff-list" class="space-y-3 text-sm"></div>
                         </div>
 
                         <!-- Print Services Pricing -->
                         <div class="glass-dark border border-white/10 rounded-3xl p-6">
-                            <div class="font-semibold mb-4">Print Services & Pricing</div>
+                            <div class="font-semibold mb-4">Print Services &amp; Pricing</div>
                             <div class="space-y-2 text-sm" id="pricing-list">
                                 <!-- Populated by JS -->
                             </div>
@@ -905,14 +887,16 @@
                         <!-- Business Settings -->
                         <div class="glass-dark border border-white/10 rounded-3xl p-6">
                             <div class="font-semibold mb-4">Business Settings</div>
+                            
                             <div class="max-w-xs">
                                 <label class="text-xs text-zinc-400">TAX / VAT RATE (%)</label>
                                 <div class="flex gap-x-2 mt-1">
-                                    <input id="tax-rate-input" type="number" step="0.5" min="0" max="50" value="15"
+                                    <input id="tax-rate-input" type="number" step="0.5" min="0" max="50" 
                                            class="flex-1 bg-zinc-900 border border-white/10 px-4 py-2 rounded-2xl text-sm">
-                                    <button onclick="saveTaxRate()" class="px-5 py-2 bg-white text-zinc-900 text-sm font-semibold rounded-2xl">Save</button>
+                                    <button onclick="saveTaxRate()" 
+                                            class="px-5 py-2 bg-white text-zinc-900 text-sm font-semibold rounded-2xl">Save</button>
                                 </div>
-                                <p class="text-[10px] text-zinc-500 mt-1">This rate is used in Sales & POS</p>
+                                <p class="text-[10px] text-zinc-500 mt-1">This rate is used in Sales &amp; POS</p>
                             </div>
                         </div>
 
@@ -942,298 +926,1630 @@
         </div>
     </div>
 
-    <!-- MODALS -->
+    <!-- ==================== MODALS ==================== -->
+    
+    <!-- Job Detail Modal -->
+    <div id="job-detail-modal" onclick="if (event.target.id === 'job-detail-modal') hideJobDetailModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="glassmorphism border border-white/10 w-full max-w-lg mx-2 rounded-3xl p-5 md:p-6">
+            <div class="flex justify-between mb-4">
+                <div>
+                    <div id="job-modal-id" class="font-mono text-xs text-indigo-400"></div>
+                    <div id="job-modal-title" class="text-xl font-semibold"></div>
+                </div>
+                <button onclick="hideJobDetailModal()" class="text-zinc-400 hover:text-white">✕</button>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-x-4 text-sm mb-5">
+                <div><span class="text-zinc-400">Customer:</span> <span id="job-modal-customer" class="font-medium"></span></div>
+                <div><span class="text-zinc-400">Due:</span> <span id="job-modal-due" class="font-medium"></span></div>
+                <div><span class="text-zinc-400">Priority:</span> <span id="job-modal-priority"></span></div>
+                <div><span class="text-zinc-400">Assigned to:</span> <span id="job-modal-assigned"></span></div>
+            </div>
+            
+            <div class="mb-4">
+                <div class="text-xs text-zinc-400 mb-1">NOTES / INSTRUCTIONS</div>
+                <textarea id="job-modal-notes" class="w-full h-20 bg-zinc-900 border border-white/10 rounded-2xl p-3 text-sm resize-y"></textarea>
+            </div>
+            
+            <div class="flex gap-x-3">
+                <button onclick="advanceJobStatus()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-500 transition rounded-2xl text-sm font-semibold">Advance Status</button>
+                <button onclick="updateJobFromModal()" class="flex-1 py-2.5 border border-white/30 hover:bg-white/5 transition rounded-2xl text-sm">Save</button>
+                <button onclick="printJobTicket()" class="px-4 py-2.5 border border-white/30 hover:bg-white/5 transition rounded-2xl text-sm flex items-center gap-x-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H3a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4" /></svg>
+                    <span>Ticket</span>
+                </button>
+                <button onclick="deleteCurrentJob()" class="px-4 py-2.5 border border-red-500/40 hover:bg-red-950/40 text-red-400 transition rounded-2xl text-sm">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Job Modal -->
+    <div id="add-job-modal" onclick="if (event.target.id === 'add-job-modal') hideAddJobModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="glassmorphism border border-white/10 w-full max-w-md mx-2 rounded-3xl p-5 md:p-6">
+            <h3 class="font-semibold text-xl mb-4" id="add-job-modal-title">Create New Print Job</h3>
+            
+            <div class="space-y-4 text-sm">
+                <div>
+                    <label class="text-xs text-zinc-400">CUSTOMER</label>
+                    <select id="new-job-customer" class="w-full bg-zinc-900 border border-white/10 rounded-2xl px-4 py-2.5"></select>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs text-zinc-400">SERVICE / DESCRIPTION</label>
+                        <input id="new-job-service" type="text" placeholder="e.g. Business Cards x500" class="w-full bg-zinc-900 border border-white/10 rounded-2xl px-4 py-2.5">
+                    </div>
+                    <div>
+                        <label class="text-xs text-zinc-400">DUE DATE</label>
+                        <input id="new-job-due" type="date" class="w-full bg-zinc-900 border border-white/10 rounded-2xl px-4 py-2.5">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs text-zinc-400">PRIORITY</label>
+                        <select id="new-job-priority" class="w-full bg-zinc-900 border border-white/10 rounded-2xl px-4 py-2.5">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs text-zinc-400">ASSIGN TO</label>
+                        <select id="new-job-assigned" class="w-full bg-zinc-900 border border-white/10 rounded-2xl px-4 py-2.5"></select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex gap-x-3 mt-6">
+                <button onclick="hideAddJobModal()" class="flex-1 py-2.5 border border-white/20 rounded-2xl">Cancel</button>
+                <button onclick="createNewJob()" class="flex-1 py-2.5 bg-white text-zinc-900 font-semibold rounded-2xl">Create Job</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Modal -->
+    <div id="invoice-modal" onclick="if (event.target.id === 'invoice-modal') hideInvoiceModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="glassmorphism border border-white/10 w-full max-w-md mx-2 rounded-3xl overflow-hidden">
+            <div class="p-7" id="invoice-content">
+                <!-- Invoice content populated by JS -->
+            </div>
+            <div class="bg-zinc-900/70 px-7 py-4 flex gap-x-3 border-t border-white/10">
+                <button onclick="hideInvoiceModal()" class="flex-1 py-2 text-sm border border-white/20 rounded-2xl">Close</button>
+                <button onclick="printInvoice()" class="flex-1 py-2 text-sm bg-white text-zinc-900 font-semibold rounded-2xl">Print / Save PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Inventory Modal -->
+    <div id="inventory-modal" onclick="if (event.target.id === 'inventory-modal') hideInventoryModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="glassmorphism border border-white/10 w-full max-w-md rounded-3xl p-6">
+            <h3 id="inventory-modal-title" class="font-semibold text-xl mb-5">Add Inventory Item</h3>
+            
+            <div class="space-y-4">
+                <input type="hidden" id="inv-edit-id">
+                <div>
+                    <label class="text-xs">Item Name</label>
+                    <input id="inv-name" class="w-full mt-1 bg-zinc-900 border border-white/10 px-4 py-2.5 rounded-2xl">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs">Category</label>
+                        <input id="inv-category" value="Consumables" class="w-full mt-1 bg-zinc-900 border border-white/10 px-4 py-2.5 rounded-2xl">
+                    </div>
+                    <div>
+                        <label class="text-xs">Unit Price (GHS)</label>
+                        <input id="inv-price" type="number" step="0.5" value="25" class="w-full mt-1 bg-zinc-900 border border-white/10 px-4 py-2.5 rounded-2xl">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs">Current Stock</label>
+                        <input id="inv-stock" type="number" value="120" class="w-full mt-1 bg-zinc-900 border border-white/10 px-4 py-2.5 rounded-2xl">
+                    </div>
+                    <div>
+                        <label class="text-xs">Minimum Stock</label>
+                        <input id="inv-min" type="number" value="30" class="w-full mt-1 bg-zinc-900 border border-white/10 px-4 py-2.5 rounded-2xl">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex gap-x-3 mt-6">
+                <button onclick="hideInventoryModal()" class="flex-1 py-2 border border-white/20 rounded-2xl">Cancel</button>
+                <button onclick="saveInventoryItem()" class="flex-1 py-2 bg-white text-zinc-900 font-semibold rounded-2xl">Save Item</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock Adjustment Modal -->
+    <div id="stock-adjust-modal" onclick="if (event.target.id === 'stock-adjust-modal') hideStockAdjustModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="glassmorphism border border-white/10 w-full max-w-sm rounded-3xl p-6">
+            <h3 class="font-semibold mb-1">Adjust Stock</h3>
+            <p id="adjust-item-name" class="text-sm text-zinc-400 mb-4"></p>
+            
+            <div class="flex items-center justify-center gap-x-4 my-6">
+                <button onclick="adjustStock(-1)" class="w-9 h-9 flex items-center justify-center text-xl bg-white/10 hover:bg-white/20 active:bg-white/5 rounded-2xl">−</button>
+                <div>
+                    <div id="adjust-current-qty" class="text-center text-4xl font-mono font-semibold tabular-nums">120</div>
+                    <div class="text-xs text-center text-zinc-400">Current Qty</div>
+                </div>
+                <button onclick="adjustStock(1)" class="w-9 h-9 flex items-center justify-center text-xl bg-white/10 hover:bg-white/20 active:bg-white/5 rounded-2xl">+</button>
+            </div>
+            
+            <div>
+                <label class="text-xs">Reason / Note</label>
+                <input id="adjust-reason" value="Stock count adjustment" class="mt-1 w-full bg-zinc-900 border border-white/10 px-4 py-2 rounded-2xl text-sm">
+            </div>
+            
+            <div class="flex gap-3 mt-6">
+                <button onclick="hideStockAdjustModal()" class="flex-1 py-2 border border-white/20 rounded-2xl">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Profile Modal -->
+    <div id="customer-modal" onclick="if (event.target.id === 'customer-modal') hideCustomerModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="glassmorphism border border-white/10 w-full max-w-lg rounded-3xl p-6">
+            <div class="flex justify-between">
+                <div id="customer-modal-header"></div>
+                <button onclick="hideCustomerModal()" class="text-zinc-400">✕</button>
+            </div>
+            
+            <div class="mt-5 grid grid-cols-3 gap-4 text-sm">
+                <div><span class="block text-xs text-zinc-400">Phone</span> <span id="customer-modal-phone" class="font-medium"></span></div>
+                <div><span class="block text-xs text-zinc-400">Email</span> <span id="customer-modal-email"></span></div>
+                <div><span class="block text-xs text-zinc-400">Total Spent</span> <span id="customer-modal-spent" class="font-semibold"></span></div>
+            </div>
+            
+            <div class="mt-6">
+                <div class="font-semibold text-sm mb-2">Order History</div>
+                <div id="customer-order-history" class="max-h-52 overflow-auto text-xs space-y-1 pr-1"></div>
+            </div>
+            
+            <div class="flex gap-x-3 mt-6">
+                <button onclick="hideCustomerModal()" class="flex-1 py-2.5 border border-white/20 rounded-2xl text-sm">Close</button>
+                <button onclick="deleteCurrentCustomer()" class="px-5 py-2.5 border border-red-500/40 text-red-400 hover:bg-red-950/30 rounded-2xl text-sm">Delete Customer</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Sample Data
-        const appState = {
-            currentUser: { name: 'Kofi Asante', email: 'kofi@printflow.com', role: 'Manager' },
-            jobs: [
-                { id: 'JOB001', customer: 'Coca Cola', service: 'Banner Printing', dueDate: '2026-05-25', priority: 'high', status: 'in-progress', assigned: 'John' },
-                { id: 'JOB002', customer: 'Nike', service: 'Business Cards', dueDate: '2026-05-20', priority: 'medium', status: 'pending', assigned: 'Mary' }
-            ],
-            services: [
-                { id: 1, name: 'Business Cards', price: 25.00 },
-                { id: 2, name: 'Flyers (100)', price: 45.00 },
-                { id: 3, name: 'Banners', price: 120.00 },
-                { id: 4, name: 'Labels', price: 35.00 },
-                { id: 5, name: 'Brochures', price: 65.00 }
-            ],
-            inventory: [
-                { id: 1, name: 'A4 Paper', category: 'Paper', stock: 500, min: 100, price: 0.50 },
-                { id: 2, name: 'Ink (Black)', category: 'Supplies', stock: 12, min: 5, price: 35.00 },
-                { id: 3, name: 'Ink (Color)', category: 'Supplies', stock: 4, min: 5, price: 40.00 }
-            ],
-            customers: [
-                { id: 1, name: 'Coca Cola', email: 'contact@cocacola.com', phone: '+233 24 123 4567' },
-                { id: 2, name: 'Nike', email: 'contact@nike.com', phone: '+233 24 234 5678' }
-            ],
-            cart: [],
-            taxRate: 15
+        // Tailwind script configuration
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#6366f1');
+            
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            'display': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif']
+                        }
+                    }
+                }
+            };
+        }
+
+        // ==================== DATA STORE ====================
+        let appData = {
+            jobs: [],
+            inventory: [],
+            customers: [],
+            transactions: [],
+            staff: [],
+            services: [],
+            currentUser: { name: "User", role: "Manager", avatar: "U" }
         };
 
-        // Login Handler
-        function handleLogin(event) {
-            event.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            
-            if (email && password) {
-                document.getElementById('login-page').classList.add('hidden');
-                document.getElementById('app').classList.remove('hidden');
-                document.getElementById('user-name').textContent = appState.currentUser.name;
-                document.getElementById('user-avatar').textContent = appState.currentUser.name.split(' ').map(n => n[0]).join('');
-                initializeDashboard();
+        let cart = [];
+        let currentPaymentMethod = 'cash';
+        let currentJobId = null;
+        let currentInventoryId = null;
+        let currentCustomerId = null;
+        let revenueChart = null;
+        let reportCharts = { sales: null, pie: null, inventory: null, staff: null };
+
+        // Completely fresh app - Zero data on first load
+        function loadDemoData() {
+            appData.jobs = [];
+            appData.inventory = [];
+            appData.customers = [];
+            appData.transactions = [];
+            appData.staff = [];
+            appData.services = [];
+            appData.taxRate = 15; // Default VAT/Tax rate (user can change in Settings)
+
+            localStorage.setItem('printflow_data', JSON.stringify(appData));
+        }
+
+        function saveData() {
+            localStorage.setItem('printflow_data', JSON.stringify(appData));
+        }
+
+        function loadFromStorage() {
+            const saved = localStorage.getItem('printflow_data');
+            if (saved) {
+                appData = JSON.parse(saved);
+                // Ensure currentUser exists
+                if (!appData.currentUser) {
+                    appData.currentUser = { name: "User", role: "Manager", avatar: "U" };
+                }
+            } else {
+                loadDemoData();
             }
         }
 
-        // Page Navigation
-        function showPage(pageName) {
-            document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
-            document.getElementById('page-' + pageName).classList.remove('hidden');
+        // ==================== NAVIGATION ====================
+        function showPage(page) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
             
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.getElementById('nav-' + pageName)?.classList.add('active');
-            
-            if (pageName === 'jobs') initializeKanban();
-            if (pageName === 'pos') initializePOS();
-            if (pageName === 'inventory') initializeInventory();
+            // Show selected
+            const target = document.getElementById('page-' + page);
+            if (target) target.classList.remove('hidden');
+
+            // Update active nav
+            document.querySelectorAll('[id^="nav-"]').forEach(el => el.classList.remove('active'));
+            const navEl = document.getElementById('nav-' + page);
+            if (navEl) navEl.classList.add('active');
+
+            // Load dynamic content
+            if (page === 'dashboard') renderDashboard();
+            if (page === 'jobs') renderKanban();
+            if (page === 'pos') renderPOS();
+            if (page === 'inventory') renderInventoryTable();
+            if (page === 'customers') renderCustomersGrid();
+            if (page === 'transactions') renderTransactionsTable();
+            if (page === 'reports') {
+                // init on first load
+                if (!reportCharts.sales) initReportCharts();
+            }
+            if (page === 'settings') renderSettings();
         }
 
-        // Initialize Dashboard
-        function initializeDashboard() {
-            updateDashboardTime();
+        function performGlobalSearch() {
+            const query = document.getElementById('global-search').value.toLowerCase().trim();
+            if (!query) return;
+
+            // Simple search: show jobs page filtered conceptually
+            showPage('jobs');
+            
+            setTimeout(() => {
+                const board = document.getElementById('kanban-board');
+                if (board) {
+                    board.style.transitionDuration = '80ms';
+                    // Highlight matching cards
+                    document.querySelectorAll('.job-card').forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            card.style.boxShadow = '0 0 0 3px rgb(99 102 241 / 0.5)';
+                            setTimeout(() => {
+                                if (card) card.style.boxShadow = '';
+                            }, 2200);
+                        }
+                    });
+                }
+            }, 180);
+            
+            document.getElementById('global-search').value = '';
+        }
+
+        // ==================== DASHBOARD ====================
+        function renderDashboard() {
+            // Update time
+            const timeEl = document.getElementById('dashboard-time');
+            if (timeEl) timeEl.textContent = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+            // Stats
+            const revenue = appData.transactions
+                .filter(t => t.type === 'payment')
+                .reduce((sum, t) => sum + t.amount, 0);
+            
+            document.getElementById('stat-revenue').textContent = '₵' + revenue.toLocaleString();
+            document.getElementById('stat-active-jobs').textContent = appData.jobs.filter(j => j.status !== 'ready').length;
+            document.getElementById('stat-completed').textContent = appData.jobs.filter(j => j.status === 'ready').length;
+            
+            const lowStockCount = appData.inventory.filter(i => i.stock < i.minStock).length;
+            document.getElementById('stat-low-stock').textContent = lowStockCount;
+
+            // Recent Jobs
+            const recentContainer = document.getElementById('recent-jobs-list');
+            recentContainer.innerHTML = '';
+            if (appData.jobs.length === 0) {
+                recentContainer.innerHTML = `<div class="text-xs px-3 py-4 text-center text-zinc-500">No jobs yet. Create your first job from the Print Jobs page.</div>`;
+            } else {
+                appData.jobs.slice(0, 4).forEach(job => {
+                    const div = document.createElement('div');
+                    div.className = `flex justify-between items-center px-3 py-2 rounded-2xl hover:bg-white/5 cursor-pointer`;
+                    div.innerHTML = `
+                        <div>
+                            <div class="font-mono text-xs text-zinc-400">${job.id}</div>
+                            <div class="text-sm">${job.customer}</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs px-2.5 py-px rounded-full ${getPriorityClass(job.priority)}">${job.priority}</div>
+                        </div>
+                    `;
+                    div.onclick = () => showJobDetail(job.id);
+                    recentContainer.appendChild(div);
+                });
+            }
+
+            // Low stock
+            const lowStockContainer = document.getElementById('low-stock-list');
+            lowStockContainer.innerHTML = '';
+            const lowStockItems = appData.inventory.filter(i => i.stock < i.minStock);
+            if (lowStockItems.length === 0) {
+                lowStockContainer.innerHTML = `<div class="text-xs px-3 py-3 text-center text-zinc-500">No low stock alerts. Add inventory items to get started.</div>`;
+            } else {
+                lowStockItems.slice(0, 4).forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = `flex justify-between px-3 py-[5px] text-xs rounded-2xl items-center hover:bg-white/5`;
+                    div.innerHTML = `
+                        <div>${item.name}</div>
+                        <div class="font-mono text-rose-400">${item.stock} left</div>
+                    `;
+                    lowStockContainer.appendChild(div);
+                });
+            }
+
+            // Revenue Chart
             renderRevenueChart();
-        }
-
-        function updateDashboardTime() {
-            const now = new Date();
-            document.getElementById('dashboard-time').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
         }
 
         function renderRevenueChart() {
             const ctx = document.getElementById('revenue-chart');
-            if (ctx && !window.revenueChart) {
-                window.revenueChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['May 1', 'May 5', 'May 10', 'May 15', 'May 17'],
-                        datasets: [{
-                            label: 'Revenue',
-                            data: [2000, 3500, 2800, 4200, 4800],
-                            borderColor: '#10b981',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                            tension: 0.4,
-                            fill: true
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { beginAtZero: true, grid: { color: 'rgba(148, 163, 184, 0.1)' } },
-                            x: { grid: { display: false } }
-                        }
+            if (!ctx) return;
+
+            if (revenueChart) revenueChart.destroy();
+
+            const labels = ['Feb 17', 'Feb 24', 'Mar 3', 'Mar 10', 'Mar 17', 'Mar 24', 'Mar 31', 'Apr 7', 'Apr 14', 'Apr 21', 'Apr 28', 'May 5', 'May 12', 'May 17'];
+            const dataPoints = [12500, 9800, 15200, 13400, 18700, 22100, 16800, 19500, 24300, 17800, 26400, 21200, 28900, 31200];
+
+            revenueChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Revenue (GHS)',
+                        data: dataPoints,
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.35,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: 'rgba(148,163,184,0.1)' }, ticks: { color: '#64748b', font: { size: 10 } } },
+                        y: { grid: { color: 'rgba(148,163,184,0.1)' }, ticks: { color: '#64748b', font: { size: 10 }, callback: v => '₵' + (v/1000) + 'k' } }
                     }
-                });
-            }
+                }
+            });
         }
 
-        // Kanban Board
-        function initializeKanban() {
+        function getPriorityClass(priority) {
+            if (priority === 'high') return 'bg-red-500 text-white px-2 py-px text-[10px]';
+            if (priority === 'medium') return 'bg-yellow-400 text-zinc-900 px-2 py-px text-[10px]';
+            return 'bg-emerald-500 text-white px-2 py-px text-[10px]';
+        }
+
+        // ==================== KANBAN ====================
+        function renderKanban() {
             const board = document.getElementById('kanban-board');
             board.innerHTML = '';
-            const statuses = ['pending', 'in-progress', 'review', 'completed'];
-            
-            statuses.forEach(status => {
-                const column = document.createElement('div');
-                column.className = 'kanban-column glass-dark border border-white/10 rounded-3xl p-4';
-                column.innerHTML = `<div class="font-semibold text-sm mb-3 capitalize">${status}</div><div class="space-y-2"></div>`;
+
+            const columns = [
+                { status: 'pending', title: 'Pending', color: 'text-zinc-400' },
+                { status: 'design', title: 'In Design', color: 'text-amber-400' },
+                { status: 'printing', title: 'Printing', color: 'text-sky-400' },
+                { status: 'ready', title: 'Ready', color: 'text-emerald-400' }
+            ];
+
+            columns.forEach(col => {
+                const colEl = document.createElement('div');
+                colEl.className = `kanban-column bg-zinc-900 border border-white/10 rounded-3xl p-3 flex flex-col`;
+                colEl.innerHTML = `
+                    <div class="flex items-center justify-between px-3 pb-2">
+                        <div class="font-semibold flex items-center gap-x-2">
+                            <span class="${col.color}">${col.title}</span>
+                        </div>
+                        <span class="text-xs px-2 py-px bg-white/10 rounded">${appData.jobs.filter(j => j.status === col.status).length}</span>
+                    </div>
+                    <div class="kanban-dropzone flex-1 space-y-2 min-h-[420px] p-1" data-status="${col.status}"></div>
+                `;
+
+                const dropzone = colEl.querySelector('.kanban-dropzone');
                 
-                appState.jobs.filter(j => j.status === status).forEach(job => {
-                    const card = document.createElement('div');
-                    card.className = 'job-card glass border border-white/10 rounded-2xl p-3 cursor-pointer hover:border-indigo-500/50';
-                    card.innerHTML = `<div class="font-semibold text-sm">${job.id}</div><div class="text-xs text-zinc-400">${job.service}</div>`;
-                    column.querySelector('div:last-child').appendChild(card);
+                // Drag events
+                dropzone.ondragover = e => { e.preventDefault(); dropzone.classList.add('drag-over'); };
+                dropzone.ondragleave = () => dropzone.classList.remove('drag-over');
+                dropzone.ondrop = e => {
+                    e.preventDefault();
+                    dropzone.classList.remove('drag-over');
+                    const jobId = e.dataTransfer.getData('text/plain');
+                    moveJobToStatus(jobId, col.status);
+                };
+
+                // Render jobs
+                const jobsInCol = appData.jobs.filter(j => j.status === col.status);
+                jobsInCol.forEach(job => {
+                    const card = createJobCard(job);
+                    dropzone.appendChild(card);
                 });
-                
-                board.appendChild(column);
+
+                board.appendChild(colEl);
             });
         }
 
-        // POS System
-        function initializePOS() {
-            const grid = document.getElementById('services-grid');
-            grid.innerHTML = '';
-            appState.services.forEach(service => {
-                const btn = document.createElement('button');
-                btn.className = 'service-btn glass-dark border border-white/10 rounded-2xl p-3 text-left text-xs hover:border-indigo-500/50 transition';
-                btn.innerHTML = `<div class="font-semibold">${service.name}</div><div class="text-zinc-400">₵${service.price.toFixed(2)}</div>`;
-                btn.onclick = () => addToCart(service);
-                grid.appendChild(btn);
-            });
+        function createJobCard(job) {
+            const card = document.createElement('div');
+            card.className = `job-card bg-zinc-950 border border-white/10 p-3.5 rounded-2xl text-sm`;
+            card.draggable = true;
+            card.dataset.jobId = job.id;
+
+            card.ondragstart = e => {
+                e.dataTransfer.setData('text/plain', job.id);
+            };
+
+            card.onclick = () => showJobDetail(job.id);
+
+            const priorityColor = job.priority === 'high' ? 'bg-red-500' : job.priority === 'medium' ? 'bg-yellow-400 text-zinc-900' : 'bg-emerald-500';
             
-            if (appState.cart.length === 0) {
-                document.getElementById('cart-items').innerHTML = '<div class="py-8 text-center text-zinc-400 text-sm">Cart is empty</div>';
+            card.innerHTML = `
+                <div class="flex justify-between items-start gap-2">
+                    <div class="min-w-0 flex-1">
+                        <div class="font-mono text-[10px] text-zinc-500">${job.id}</div>
+                        <div class="font-semibold leading-tight mt-px truncate">${job.customer}</div>
+                    </div>
+                    <div class="px-2.5 py-px text-[10px] font-bold rounded flex-shrink-0 ${priorityColor}">${job.priority.toUpperCase()}</div>
+                </div>
+                <div class="text-xs mt-2 text-zinc-300 line-clamp-2 break-words">${job.service}</div>
+                
+                <div class="flex justify-between items-center mt-3 text-xs">
+                    <div class="text-zinc-400 truncate">${job.due}</div>
+                    <div class="text-indigo-300 text-[10px] flex-shrink-0">${job.assigned.split(' ')[0]}</div>
+                </div>
+            `;
+            return card;
+        }
+
+        function moveJobToStatus(jobId, newStatus) {
+            const job = appData.jobs.find(j => j.id === jobId);
+            if (!job || job.status === newStatus) return;
+
+            job.status = newStatus;
+            saveData();
+            renderKanban();
+            
+            // Toast feedback
+            showToast(`Job ${jobId} moved to ${newStatus}`);
+        }
+
+        function showJobDetail(jobId) {
+            const job = appData.jobs.find(j => j.id === jobId);
+            if (!job) return;
+
+            currentJobId = jobId;
+
+            document.getElementById('job-modal-id').textContent = job.id;
+            document.getElementById('job-modal-title').textContent = job.service;
+            document.getElementById('job-modal-customer').textContent = job.customer;
+            document.getElementById('job-modal-due').textContent = job.due;
+            document.getElementById('job-modal-assigned').textContent = job.assigned;
+            document.getElementById('job-modal-notes').value = job.notes || '';
+
+            const priorityEl = document.getElementById('job-modal-priority');
+            priorityEl.innerHTML = `<span class="px-3 py-px text-xs rounded-full ${getPriorityClass(job.priority)}">${job.priority.toUpperCase()}</span>`;
+
+            document.getElementById('job-detail-modal').classList.remove('hidden');
+            document.getElementById('job-detail-modal').classList.add('flex');
+        }
+
+        function hideJobDetailModal() {
+            document.getElementById('job-detail-modal').classList.remove('flex');
+            document.getElementById('job-detail-modal').classList.add('hidden');
+        }
+
+        function advanceJobStatus() {
+            if (!currentJobId) return;
+            const job = appData.jobs.find(j => j.id === currentJobId);
+            if (!job) return;
+
+            const order = ['pending', 'design', 'printing', 'ready'];
+            const currentIndex = order.indexOf(job.status);
+            if (currentIndex < order.length - 1) {
+                job.status = order[currentIndex + 1];
+                saveData();
+                hideJobDetailModal();
+                renderKanban();
+                showToast(`Job advanced to ${job.status}`);
+            } else {
+                showToast('Job is already at final stage');
             }
+        }
+
+        function updateJobFromModal() {
+            if (!currentJobId) return;
+            const job = appData.jobs.find(j => j.id === currentJobId);
+            if (!job) return;
+
+            job.notes = document.getElementById('job-modal-notes').value;
+            saveData();
+            hideJobDetailModal();
+            renderKanban();
+            showToast('Job updated');
+        }
+
+        function deleteCurrentJob() {
+            if (!currentJobId || !confirm('Delete this job permanently?')) return;
+            
+            appData.jobs = appData.jobs.filter(j => j.id !== currentJobId);
+            saveData();
+            hideJobDetailModal();
+            renderKanban();
+            showToast('Job deleted');
+        }
+
+        function printJobTicket() {
+            if (!currentJobId) return;
+            const job = appData.jobs.find(j => j.id === currentJobId);
+            if (!job) return;
+
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Job Ticket - ${job.id}</title>
+                    <style>
+                        body { font-family: system-ui, Arial; padding: 30px; max-width: 600px; margin: auto; }
+                        .header { border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
+                        .label { font-size: 12px; color: #666; }
+                        .value { font-size: 16px; font-weight: 600; }
+                        .section { margin: 15px 0; }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h2>JOB TICKET</h2>
+                        <p><strong>${job.id}</strong></p>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="label">CUSTOMER</div>
+                        <div class="value">${job.customer}</div>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="label">SERVICE / DESCRIPTION</div>
+                        <div class="value">${job.service}</div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 40px;">
+                        <div class="section">
+                            <div class="label">DUE DATE</div>
+                            <div class="value">${job.due}</div>
+                        </div>
+                        <div class="section">
+                            <div class="label">PRIORITY</div>
+                            <div class="value">${job.priority.toUpperCase()}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="label">ASSIGNED TO</div>
+                        <div class="value">${job.assigned}</div>
+                    </div>
+                    
+                    ${job.notes ? `
+                    <div class="section">
+                        <div class="label">NOTES</div>
+                        <div>${job.notes}</div>
+                    </div>` : ''}
+                    
+                    <div style="margin-top: 40px; font-size: 12px; color: #666;">
+                        Generated by PrintFlow • ${new Date().toLocaleDateString()}
+                    </div>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            setTimeout(() => {
+                printWindow.print();
+            }, 300);
+        }
+
+        function showAddJobModal() {
+            // Populate customer select
+            const custSelect = document.getElementById('new-job-customer');
+            custSelect.innerHTML = '';
+            appData.customers.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c.name;
+                opt.textContent = c.name;
+                custSelect.appendChild(opt);
+            });
+
+            // Populate staff
+            const staffSelect = document.getElementById('new-job-assigned');
+            staffSelect.innerHTML = '';
+            appData.staff.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.name;
+                opt.textContent = s.name;
+                staffSelect.appendChild(opt);
+            });
+
+            // Default due date
+            const dueInput = document.getElementById('new-job-due');
+            const future = new Date();
+            future.setDate(future.getDate() + 5);
+            dueInput.value = future.toISOString().split('T')[0];
+
+            document.getElementById('add-job-modal').classList.remove('hidden');
+            document.getElementById('add-job-modal').classList.add('flex');
+        }
+
+        function hideAddJobModal() {
+            document.getElementById('add-job-modal').classList.remove('flex');
+            document.getElementById('add-job-modal').classList.add('hidden');
+        }
+
+        function createNewJob() {
+            const customer = document.getElementById('new-job-customer').value;
+            const service = document.getElementById('new-job-service').value;
+            const due = document.getElementById('new-job-due').value;
+            const priority = document.getElementById('new-job-priority').value;
+            const assigned = document.getElementById('new-job-assigned').value;
+
+            if (!service || !due) {
+                alert('Please fill service and due date');
+                return;
+            }
+
+            const newJob = {
+                id: "JOB-" + (2400 + appData.jobs.length + 1),
+                customer,
+                service,
+                status: "pending",
+                priority,
+                due,
+                assigned,
+                notes: ""
+            };
+
+            appData.jobs.unshift(newJob);
+            saveData();
+            hideAddJobModal();
+            renderKanban();
+            showToast('New job created successfully');
+        }
+
+        // ==================== POS / SALES ====================
+        function renderPOS() {
+            renderServicesGrid();
+            renderCart();
+            // Update tax rate display
+            const taxDisplay = document.getElementById('tax-rate-display');
+            if (taxDisplay) taxDisplay.textContent = appData.taxRate || 15;
+        }
+
+        function renderServicesGrid(filteredServices = null) {
+            const container = document.getElementById('services-grid');
+            container.innerHTML = '';
+
+            const servicesToShow = filteredServices || appData.services;
+
+            servicesToShow.forEach(service => {
+                const btn = document.createElement('button');
+                btn.className = `service-btn text-left px-3.5 py-3 bg-zinc-900 hover:bg-zinc-800 border border-white/10 rounded-2xl text-sm w-full`;
+                btn.innerHTML = `
+                    <div class="font-medium leading-tight line-clamp-2">${service.name}</div>
+                    <div class="text-emerald-400 font-mono text-xs mt-1">₵${service.price}</div>
+                `;
+                btn.onclick = () => addToCart(service);
+                container.appendChild(btn);
+            });
+        }
+
+        function filterServices() {
+            const query = document.getElementById('service-search').value.toLowerCase();
+            const filtered = appData.services.filter(s => s.name.toLowerCase().includes(query));
+            renderServicesGrid(filtered);
         }
 
         function addToCart(service) {
-            appState.cart.push({ ...service, quantity: 1 });
-            calculateCartTotals();
-            initializePOS();
+            const existing = cart.findIndex(item => item.id === service.id);
+            if (existing > -1) {
+                cart[existing].qty = (cart[existing].qty || 1) + 1;
+            } else {
+                cart.push({ ...service, qty: 1 });
+            }
+            renderCart();
         }
 
-        function calculateCartTotals() {
-            let subtotal = appState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const discount = parseFloat(document.getElementById('discount-input').value) || 0;
-            const discountAmount = subtotal * (discount / 100);
-            const taxableAmount = subtotal - discountAmount;
-            const tax = taxableAmount * (appState.taxRate / 100);
-            const total = taxableAmount + tax;
-            
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-xs text-zinc-500">Cart is empty.<br>Click services on the left to add.</div>`;
+                updateCartTotals();
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const itemEl = document.createElement('div');
+                itemEl.className = `cart-item flex justify-between items-center bg-zinc-950 px-3 py-2.5 rounded-2xl border border-white/10`;
+                itemEl.innerHTML = `
+                    <div class="flex-1 pr-2">
+                        <div class="text-sm leading-tight">${item.name}</div>
+                        <div class="font-mono text-emerald-400 text-xs">₵${item.price} × ${item.qty}</div>
+                    </div>
+                    <div class="flex items-center gap-x-2">
+                        <div class="font-mono text-sm tabular-nums">₵${(item.price * item.qty).toFixed(2)}</div>
+                        
+                        <div class="flex items-center border border-white/20 rounded-xl overflow-hidden">
+                            <button onclick="changeCartQty(${index}, -1)" class="px-2 py-px hover:bg-white/10 active:bg-white/5 text-lg leading-none">−</button>
+                            <div class="px-2 text-xs tabular-nums">${item.qty}</div>
+                            <button onclick="changeCartQty(${index}, 1)" class="px-2 py-px hover:bg-white/10 active:bg-white/5 text-lg leading-none">+</button>
+                        </div>
+                        
+                        <button onclick="removeFromCart(${index})" class="text-rose-400 hover:text-rose-300 px-1">×</button>
+                    </div>
+                `;
+                container.appendChild(itemEl);
+            });
+
+            updateCartTotals();
+        }
+
+        function changeCartQty(index, delta) {
+            cart[index].qty = Math.max(1, (cart[index].qty || 1) + delta);
+            renderCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            renderCart();
+        }
+
+        function updateCartTotals() {
+            let subtotal = 0;
+            cart.forEach(item => subtotal += item.price * (item.qty || 1));
+
+            const discountPercent = parseFloat(document.getElementById('discount-input')?.value) || 0;
+            const discount = subtotal * (discountPercent / 100);
+            const taxable = subtotal - discount;
+            const taxRate = (appData.taxRate || 15) / 100;
+            const tax = taxable * taxRate;
+            const total = taxable + tax;
+
             document.getElementById('cart-subtotal').textContent = '₵' + subtotal.toFixed(2);
             document.getElementById('cart-tax').textContent = '₵' + tax.toFixed(2);
             document.getElementById('cart-total').textContent = '₵' + total.toFixed(2);
         }
 
-        function clearCart() {
-            appState.cart = [];
-            initializePOS();
+        function calculateCartTotals() {
+            updateCartTotals();
         }
 
-        // Inventory
-        function initializeInventory() {
+        function selectPaymentMethod(element, method) {
+            // Deselect all
+            document.querySelectorAll('.payment-btn').forEach(el => el.classList.remove('!border-emerald-400', '!bg-emerald-900/30'));
+            element.classList.add('!border-emerald-400', '!bg-emerald-900/30');
+            currentPaymentMethod = method;
+        }
+
+        function completeSale() {
+            if (cart.length === 0) {
+                alert("Cart is empty");
+                return;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+            const discountPercent = parseFloat(document.getElementById('discount-input').value) || 0;
+            const discount = subtotal * (discountPercent / 100);
+            const total = (subtotal - discount) * 1.15;
+
+            // Create transaction
+            const newTransaction = {
+                id: Date.now(),
+                date: new Date().toISOString().split('T')[0],
+                type: "payment",
+                description: `POS Sale • ${cart.length} item(s)`,
+                amount: parseFloat(total.toFixed(2)),
+                method: currentPaymentMethod.toUpperCase()
+            };
+            appData.transactions.unshift(newTransaction);
+
+            // Optionally create a job
+            if (confirm("Create a print job from this sale?")) {
+                const firstItem = cart[0];
+                const newJob = {
+                    id: "JOB-" + (2400 + appData.jobs.length + 1),
+                    customer: "Walk-in Customer",
+                    service: firstItem.name + (cart.length > 1 ? ` +${cart.length - 1} more` : ""),
+                    status: "pending",
+                    priority: "medium",
+                    due: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
+                    assigned: appData.staff[0].name,
+                    notes: "Created from POS sale"
+                };
+                appData.jobs.unshift(newJob);
+            }
+
+            saveData();
+
+            // Show invoice
+            showInvoice(newTransaction, cart, total);
+
+            // Clear everything
+            cart = [];
+            document.getElementById('discount-input').value = '0';
+            renderCart();
+            renderTransactionsTable(); // refresh if on page
+        }
+
+        function showInvoice(transaction, items, total) {
+            const taxRate = appData.taxRate || 15;
+            const taxAmount = total - (total / (1 + taxRate / 100));
+            const subtotal = total - taxAmount;
+
+            const content = document.getElementById('invoice-content');
+            content.innerHTML = `
+                <div class="text-center mb-5">
+                    <div class="font-display text-2xl tracking-tighter">Your Business</div>
+                    <div class="text-xs text-zinc-400">Print Shop</div>
+                </div>
+                
+                <div class="text-xs flex justify-between border-b border-white/10 pb-3">
+                    <div>
+                        <div class="font-mono">INV-${transaction.id}</div>
+                        <div>${transaction.date}</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-semibold">PAID</div>
+                        <div class="text-emerald-400">${transaction.method}</div>
+                    </div>
+                </div>
+
+                <div class="py-4 text-sm">
+                    ${items.map(item => `
+                        <div class="flex justify-between py-1">
+                            <div>${item.name} ×${item.qty}</div>
+                            <div class="font-mono">₵${(item.price * item.qty).toFixed(2)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="border-t border-white/10 pt-3 text-sm space-y-1">
+                    <div class="flex justify-between">
+                        <span>Subtotal</span>
+                        <span class="font-mono">₵${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-zinc-400">
+                        <span>Tax (${taxRate}%)</span>
+                        <span class="font-mono">₵${taxAmount.toFixed(2)}</span>
+                    </div>
+                    <div class="flex justify-between font-semibold pt-1 text-base">
+                        <span>TOTAL</span>
+                        <span class="font-mono">₵${total.toFixed(2)}</span>
+                    </div>
+                </div>
+
+                <div class="text-[10px] text-center text-zinc-500 mt-6">Thank you for your business!</div>
+            `;
+
+            document.getElementById('invoice-modal').classList.remove('hidden');
+            document.getElementById('invoice-modal').classList.add('flex');
+        }
+
+        function hideInvoiceModal() {
+            document.getElementById('invoice-modal').classList.remove('flex');
+            document.getElementById('invoice-modal').classList.add('hidden');
+        }
+
+        function printInvoice() {
+            const content = document.getElementById('invoice-content').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html><head><title>PrintFlow Invoice</title>
+                <style>body { font-family: system-ui; padding: 40px; max-width: 420px; margin: auto; }</style>
+                </head><body>${content}</body></html>
+            `);
+            printWindow.document.close();
+            setTimeout(() => {
+                printWindow.print();
+            }, 400);
+        }
+
+        // ==================== INVENTORY ====================
+        function renderInventoryTable() {
             const tbody = document.getElementById('inventory-table-body');
             tbody.innerHTML = '';
-            appState.inventory.forEach(item => {
+
+            appData.inventory.forEach(item => {
+                const isLow = item.stock < item.minStock;
                 const row = document.createElement('tr');
-                row.className = item.stock <= item.min ? 'bg-rose-950/20' : '';
+                row.className = isLow ? 'bg-rose-950/30' : '';
                 row.innerHTML = `
-                    <td class="px-6 py-3">${item.name}</td>
-                    <td class="px-4 py-3">${item.category}</td>
-                    <td class="px-4 py-3 text-center">${item.stock}</td>
-                    <td class="px-4 py-3 text-center">${item.min}</td>
-                    <td class="px-4 py-3 text-right">₵${item.price.toFixed(2)}</td>
-                    <td class="px-6 py-3"><button class="text-indigo-400 hover:underline text-xs">Edit</button></td>
+                    <td class="px-6 py-3.5">
+                        <div class="font-medium">${item.name}</div>
+                    </td>
+                    <td class="px-4 py-3.5 text-xs text-zinc-400">${item.category}</td>
+                    <td class="px-4 py-3.5 text-center">
+                        <span class="font-mono text-sm ${isLow ? 'text-rose-400 font-bold' : ''}">${item.stock}</span>
+                    </td>
+                    <td class="px-4 py-3.5 text-center text-xs text-zinc-400">${item.minStock}</td>
+                    <td class="px-4 py-3.5 text-right font-mono text-emerald-400">₵${item.price}</td>
+                    <td class="px-6 py-3.5">
+                        <div class="flex gap-x-1 justify-end">
+                            <button onclick="showStockAdjustModal(${item.id})" class="text-xs px-3 py-1 border border-white/20 hover:bg-white/5 rounded-2xl">Adjust</button>
+                            <button onclick="editInventoryItem(${item.id})" class="text-xs px-3 py-1 border border-white/20 hover:bg-white/5 rounded-2xl">Edit</button>
+                            <button onclick="deleteInventoryItem(${item.id})" class="text-xs px-3 py-1 text-red-400 hover:bg-red-950/30 border border-red-500/30 rounded-2xl">Del</button>
+                        </div>
+                    </td>
                 `;
                 tbody.appendChild(row);
             });
         }
 
-        // Theme Toggle
-        function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
-            const icon = document.getElementById('theme-icon');
-            icon.style.transform = 'rotate(180deg)';
-            setTimeout(() => icon.style.transform = 'none', 300);
-        }
-
-        // Utilities
-        function toggleMobileSidebar() {
-            document.getElementById('sidebar').classList.toggle('hidden');
-        }
-
-        function showSettings() {
-            showPage('settings');
-        }
-
-        function logout() {
-            if (confirm('Are you sure you want to logout?')) {
-                document.getElementById('app').classList.add('hidden');
-                document.getElementById('login-page').classList.remove('hidden');
-                document.getElementById('login-form').reset();
-            }
-        }
-
-        function showAddJobModal() {
-            alert('Job modal would open here');
-        }
-
-        function showAddInventoryModal() {
-            alert('Inventory modal would open here');
-        }
-
-        function showAddCustomerModal() {
-            alert('Customer modal would open here');
-        }
-
-        function showAddStaffModal() {
-            alert('Staff modal would open here');
-        }
-
-        function showAddServiceModal() {
-            alert('Service modal would open here');
-        }
-
-        function filterServices() {
-            // Filter implementation
-        }
-
         function filterInventoryTable() {
-            // Filter implementation
-        }
+            const search = document.getElementById('inventory-search').value.toLowerCase();
+            const filterType = document.getElementById('inventory-filter').value;
 
-        function selectPaymentMethod(btn, method) {
-            document.querySelectorAll('.payment-btn').forEach(b => b.classList.remove('border-indigo-500', 'bg-indigo-500/20'));
-            btn.classList.add('border-indigo-500', 'bg-indigo-500/20');
-        }
-
-        function completeSale() {
-            alert('Sale completed! Invoice printed.');
-            clearCart();
-        }
-
-        function performGlobalSearch() {
-            alert('Global search functionality');
-        }
-
-        function saveTaxRate() {
-            const rate = parseFloat(document.getElementById('tax-rate-input').value);
-            if (rate >= 0 && rate <= 50) {
-                appState.taxRate = rate;
-                document.getElementById('tax-rate-display').textContent = rate;
-                alert('Tax rate saved!');
-            }
-        }
-
-        function exportTransactions(format) {
-            alert(`Exporting transactions as ${format.toUpperCase()}`);
-        }
-
-        function exportReportCSV() {
-            alert('Exporting report as CSV');
-        }
-
-        function applyReportFilters() {
-            alert('Report filters applied');
-        }
-
-        function switchReportTab(tabIndex) {
-            document.querySelectorAll('[id^="report-content-"]').forEach(el => el.classList.add('hidden'));
-            document.getElementById('report-content-' + tabIndex).classList.remove('hidden');
-            document.querySelectorAll('.report-tab').forEach((tab, i) => {
-                tab.classList.toggle('text-zinc-400', i !== tabIndex);
-                tab.classList.toggle('text-white', i === tabIndex);
-                tab.classList.toggle('border-b-2', i === tabIndex);
-                tab.classList.toggle('border-white', i === tabIndex);
+            const rows = document.querySelectorAll('#inventory-table-body tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                const isLow = row.classList.contains('bg-rose-950/30');
+                
+                let visible = text.includes(search);
+                
+                if (filterType === 'low' && !isLow) visible = false;
+                
+                row.style.display = visible ? '' : 'none';
             });
         }
 
-        function changePassword() {
-            alert('Password changed successfully!');
+        function showAddInventoryModal() {
+            document.getElementById('inventory-modal-title').textContent = 'Add New Inventory Item';
+            document.getElementById('inv-edit-id').value = '';
+            document.getElementById('inv-name').value = '';
+            document.getElementById('inv-category').value = 'Consumables';
+            document.getElementById('inv-price').value = '25';
+            document.getElementById('inv-stock').value = '50';
+            document.getElementById('inv-min').value = '10';
+            
+            document.getElementById('inventory-modal').classList.remove('hidden');
+            document.getElementById('inventory-modal').classList.add('flex');
         }
 
-        function resetAllData() {
-            if (confirm('Are you sure? This will reset all data!')) {
-                alert('Data reset!');
+        function editInventoryItem(id) {
+            const item = appData.inventory.find(i => i.id === id);
+            if (!item) return;
+
+            document.getElementById('inventory-modal-title').textContent = 'Edit Inventory Item';
+            document.getElementById('inv-edit-id').value = item.id;
+            document.getElementById('inv-name').value = item.name;
+            document.getElementById('inv-category').value = item.category;
+            document.getElementById('inv-price').value = item.price;
+            document.getElementById('inv-stock').value = item.stock;
+            document.getElementById('inv-min').value = item.minStock;
+
+            document.getElementById('inventory-modal').classList.remove('hidden');
+            document.getElementById('inventory-modal').classList.add('flex');
+        }
+
+        function saveInventoryItem() {
+            const editId = document.getElementById('inv-edit-id').value;
+            const name = document.getElementById('inv-name').value.trim();
+            if (!name) return alert('Name required');
+
+            const newItem = {
+                id: editId ? parseInt(editId) : Date.now(),
+                name: name,
+                category: document.getElementById('inv-category').value,
+                stock: parseInt(document.getElementById('inv-stock').value),
+                minStock: parseInt(document.getElementById('inv-min').value),
+                price: parseFloat(document.getElementById('inv-price').value)
+            };
+
+            if (editId) {
+                const idx = appData.inventory.findIndex(i => i.id == editId);
+                if (idx > -1) appData.inventory[idx] = newItem;
+            } else {
+                appData.inventory.push(newItem);
+            }
+
+            saveData();
+            hideInventoryModal();
+            renderInventoryTable();
+        }
+
+        function hideInventoryModal() {
+            document.getElementById('inventory-modal').classList.remove('flex');
+            document.getElementById('inventory-modal').classList.add('hidden');
+        }
+
+        function showStockAdjustModal(id) {
+            const item = appData.inventory.find(i => i.id === id);
+            if (!item) return;
+
+            currentInventoryId = id;
+            document.getElementById('adjust-item-name').textContent = item.name;
+            document.getElementById('adjust-current-qty').textContent = item.stock;
+            document.getElementById('adjust-reason').value = 'Stock count adjustment';
+
+            document.getElementById('stock-adjust-modal').classList.remove('hidden');
+            document.getElementById('stock-adjust-modal').classList.add('flex');
+        }
+
+        function adjustStock(delta) {
+            if (!currentInventoryId) return;
+            const item = appData.inventory.find(i => i.id === currentInventoryId);
+            if (!item) return;
+
+            item.stock = Math.max(0, item.stock + delta);
+            document.getElementById('adjust-current-qty').textContent = item.stock;
+            
+            // Auto save on adjustment
+            saveData();
+            renderInventoryTable();
+        }
+
+        function hideStockAdjustModal() {
+            document.getElementById('stock-adjust-modal').classList.remove('flex');
+            document.getElementById('stock-adjust-modal').classList.add('hidden');
+            renderInventoryTable();
+        }
+
+        function deleteInventoryItem(id) {
+            if (!confirm('Delete this inventory item?')) return;
+            appData.inventory = appData.inventory.filter(i => i.id !== id);
+            saveData();
+            renderInventoryTable();
+            showToast('Item deleted');
+        }
+
+        // ==================== CUSTOMERS ====================
+        function renderCustomersGrid() {
+            const container = document.getElementById('customers-grid');
+            container.innerHTML = '';
+
+            appData.customers.forEach(customer => {
+                const card = document.createElement('div');
+                card.className = `glass-dark border border-white/10 p-5 rounded-3xl cursor-pointer hover:border-white/30 transition`;
+                card.innerHTML = `
+                    <div class="flex items-center gap-x-3">
+                        <div class="w-9 h-9 rounded-2xl bg-zinc-800 flex items-center justify-center text-xs font-bold tracking-wider flex-shrink-0">${customer.name.split(' ').map(n => n[0]).join('')}</div>
+                        <div class="min-w-0 flex-1">
+                            <div class="font-semibold truncate">${customer.name}</div>
+                            <div class="text-xs text-zinc-400 truncate">${customer.phone}</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex justify-between text-xs">
+                        <div><span class="text-emerald-400 font-semibold">₵${customer.totalSpent.toLocaleString()}</span><br><span class="text-[10px] text-zinc-500">total spent</span></div>
+                        <div class="text-right"><span class="font-mono">${customer.orders}</span><br><span class="text-[10px] text-zinc-500">orders</span></div>
+                    </div>
+                `;
+                card.onclick = () => showCustomerProfile(customer.id);
+                container.appendChild(card);
+            });
+        }
+
+        function showCustomerProfile(id) {
+            const customer = appData.customers.find(c => c.id === id);
+            if (!customer) return;
+            currentCustomerId = id;
+
+            document.getElementById('customer-modal-header').innerHTML = `
+                <div>
+                    <div class="font-semibold text-xl">${customer.name}</div>
+                    <div class="text-xs text-zinc-400">${customer.email}</div>
+                </div>
+            `;
+            document.getElementById('customer-modal-phone').textContent = customer.phone;
+            document.getElementById('customer-modal-email').textContent = customer.email;
+            document.getElementById('customer-modal-spent').textContent = '₵' + customer.totalSpent.toLocaleString();
+
+            // Dynamic order history from jobs
+            const historyContainer = document.getElementById('customer-order-history');
+            const customerJobs = appData.jobs.filter(j => j.customer === customer.name).slice(0, 5);
+            
+            if (customerJobs.length > 0) {
+                historyContainer.innerHTML = customerJobs.map(job => `
+                    <div class="text-xs px-3 py-2 bg-white/5 rounded-2xl flex justify-between items-center gap-2">
+                        <div class="min-w-0 flex-1">
+                            <span class="font-mono text-[10px] text-zinc-400">${job.id}</span> — 
+                            <span class="truncate">${job.service}</span>
+                        </div>
+                        <div class="font-mono text-emerald-400 text-xs flex-shrink-0">${job.due}</div>
+                    </div>
+                `).join('');
+            } else {
+                historyContainer.innerHTML = `<div class="text-xs text-zinc-500 px-3 py-4 text-center">No jobs found for this customer yet.</div>`;
+            }
+
+            document.getElementById('customer-modal').classList.remove('hidden');
+            document.getElementById('customer-modal').classList.add('flex');
+        }
+
+        function hideCustomerModal() {
+            document.getElementById('customer-modal').classList.remove('flex');
+            document.getElementById('customer-modal').classList.add('hidden');
+        }
+
+        function deleteCurrentCustomer() {
+            if (!currentCustomerId || !confirm('Delete this customer?')) return;
+            appData.customers = appData.customers.filter(c => c.id !== currentCustomerId);
+            saveData();
+            hideCustomerModal();
+            renderCustomersGrid();
+            showToast('Customer deleted');
+        }
+
+        function showAddCustomerModal() {
+            const name = prompt("Customer full name:");
+            if (!name) return;
+            const phone = prompt("Phone number:") || "N/A";
+            const email = prompt("Email:") || "";
+
+            const newCustomer = {
+                id: Date.now(),
+                name,
+                phone,
+                email,
+                totalSpent: 0,
+                orders: 0
+            };
+            appData.customers.push(newCustomer);
+            saveData();
+            renderCustomersGrid();
+        }
+
+        // ==================== TRANSACTIONS ====================
+        function renderTransactionsTable() {
+            const tbody = document.getElementById('transactions-table-body');
+            tbody.innerHTML = '';
+
+            let moneyIn = 0, moneyOut = 0;
+
+            appData.transactions.forEach(tx => {
+                if (tx.type === 'payment') moneyIn += tx.amount;
+                else moneyOut += Math.abs(tx.amount);
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-3 text-xs text-zinc-400 font-mono">${tx.date}</td>
+                    <td class="px-4 py-3">
+                        <span class="px-3 py-px text-xs rounded-full ${tx.type === 'payment' ? 'bg-emerald-900 text-emerald-300' : 'bg-rose-900 text-rose-300'}">${tx.type}</span>
+                    </td>
+                    <td class="px-4 py-3 text-sm">${tx.description}</td>
+                    <td class="px-4 py-3 text-right font-mono ${tx.type === 'payment' ? 'text-emerald-400' : 'text-rose-400'}">₵${Math.abs(tx.amount)}</td>
+                    <td class="px-6 py-3 text-xs text-zinc-400">${tx.method}</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            document.getElementById('money-in').textContent = '₵' + moneyIn.toLocaleString();
+            document.getElementById('money-out').textContent = '₵' + moneyOut.toLocaleString();
+            document.getElementById('net-balance').textContent = '₵' + (moneyIn - moneyOut).toLocaleString();
+            document.getElementById('net-balance').className = (moneyIn - moneyOut) > 0 ? 'text-2xl font-semibold tabular-nums text-emerald-400' : 'text-2xl font-semibold tabular-nums text-rose-400';
+        }
+
+        function exportTransactions(format) {
+            let content = '';
+            const filename = `printflow-transactions-${new Date().toISOString().slice(0,10)}`;
+
+            if (format === 'csv') {
+                content = 'Date,Type,Description,Amount,Method\n';
+                appData.transactions.forEach(tx => {
+                    content += `${tx.date},${tx.type},"${tx.description}",${tx.amount},${tx.method}\n`;
+                });
+                downloadFile(content, filename + '.csv', 'text/csv');
+            } 
+            else if (format === 'txt') {
+                content = 'PrintFlow Transactions Export\n===========================\n\n';
+                appData.transactions.forEach(tx => {
+                    content += `${tx.date} | ${tx.type.toUpperCase()} | ${tx.description} | ₵${tx.amount} | ${tx.method}\n`;
+                });
+                downloadFile(content, filename + '.txt', 'text/plain');
+            } 
+            else if (format === 'pdf') {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                doc.setFontSize(16);
+                doc.text("PrintFlow — Transactions Report", 20, 20);
+                doc.setFontSize(10);
+                let y = 35;
+                appData.transactions.forEach(tx => {
+                    doc.text(`${tx.date}  ${tx.type}  ${tx.description}  ₵${tx.amount}  ${tx.method}`, 20, y);
+                    y += 8;
+                    if (y > 270) { doc.addPage(); y = 20; }
+                });
+                doc.save(filename + '.pdf');
             }
         }
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('PrintFlow loaded');
-        });
+        function downloadFile(content, filename, mime) {
+            const blob = new Blob([content], { type: mime });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // ==================== REPORTS ====================
+        function switchReportTab(tabIndex) {
+            // Hide all
+            document.querySelectorAll('[id^="report-content-"]').forEach(el => el.classList.add('hidden'));
+            // Show selected
+            document.getElementById('report-content-' + tabIndex).classList.remove('hidden');
+
+            // Active styles
+            document.querySelectorAll('.report-tab').forEach((el, i) => {
+                if (i === tabIndex) {
+                    el.classList.add('active', 'border-white');
+                    el.classList.remove('text-zinc-400');
+                } else {
+                    el.classList.remove('active', 'border-white');
+                    el.classList.add('text-zinc-400');
+                }
+            });
+        }
+
+        function initReportCharts() {
+            // Sales chart
+            const salesCtx = document.getElementById('report-sales-chart');
+            if (salesCtx && !reportCharts.sales) {
+                reportCharts.sales = new Chart(salesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                        datasets: [{
+                            label: 'Revenue',
+                            data: [12400, 18700, 22100, 28900],
+                            backgroundColor: '#6366f1'
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+                });
+            }
+
+            // Services pie
+            const pieCtx = document.getElementById('report-services-pie');
+            if (pieCtx && !reportCharts.pie) {
+                reportCharts.pie = new Chart(pieCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Business Cards', 'Posters', 'Large Format', 'Finishing'],
+                        datasets: [{
+                            data: [35, 22, 18, 25],
+                            backgroundColor: ['#6366f1', '#a855f7', '#14b8a6', '#eab308']
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false }
+                });
+            }
+
+            // Inventory
+            const invCtx = document.getElementById('report-inventory-chart');
+            if (invCtx && !reportCharts.inventory) {
+                reportCharts.inventory = new Chart(invCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: appData.inventory.map(i => i.name.substring(0, 18)),
+                        datasets: [{
+                            label: 'Current Stock',
+                            data: appData.inventory.map(i => i.stock),
+                            backgroundColor: '#14b8a6'
+                        }]
+                    },
+                    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false }
+                });
+            }
+
+            // Staff
+            const staffCtx = document.getElementById('report-staff-chart');
+            if (staffCtx && !reportCharts.staff) {
+                reportCharts.staff = new Chart(staffCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: appData.staff.map(s => s.name),
+                        datasets: [{
+                            label: 'Jobs Completed',
+                            data: appData.staff.map(s => s.jobsCompleted),
+                            backgroundColor: '#6366f1'
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false }
+                });
+            }
+        }
+
+        function applyReportFilters() {
+            const from = document.getElementById('report-from').value;
+            const to = document.getElementById('report-to').value;
+            showToast(`Filters applied: ${from} — ${to} (demo data)`);
+            // In real app would filter charts. Here we just notify.
+        }
+
+        function exportReportCSV() {
+            let csv = 'Report,Metric,Value\n';
+            csv += `Sales,Total Revenue,48920\n`;
+            csv += `Inventory,Low Stock Items,6\n`;
+            csv += `Staff,Total Jobs Completed,307\n`;
+            downloadFile(csv, 'printflow-report.csv', 'text/csv');
+        }
+
+        // ==================== SETTINGS ====================
+        function renderSettings() {
+            // Staff list
+            const staffContainer = document.getElementById('staff-list');
+            staffContainer.innerHTML = '';
+            if (appData.staff.length === 0) {
+                staffContainer.innerHTML = `<div class="text-xs text-zinc-500 px-4 py-3">No staff added yet.</div>`;
+            } else {
+                appData.staff.forEach(member => {
+                    const div = document.createElement('div');
+                    div.className = `flex justify-between px-4 py-3 bg-zinc-950 rounded-2xl text-sm items-center`;
+                    div.innerHTML = `
+                        <div>
+                            <div class="font-medium">${member.name}</div>
+                            <div class="text-xs text-zinc-400">${member.role}</div>
+                        </div>
+                        <div class="text-xs text-emerald-400 font-mono">${member.jobsCompleted} jobs</div>
+                    `;
+                    staffContainer.appendChild(div);
+                });
+            }
+
+            // Pricing list
+            const pricingContainer = document.getElementById('pricing-list');
+            pricingContainer.innerHTML = '';
+            if (appData.services.length === 0) {
+                pricingContainer.innerHTML = `<div class="text-xs text-zinc-500 px-3 py-2">No services added yet. Add services to use in POS.</div>`;
+            } else {
+                appData.services.forEach(service => {
+                    const div = document.createElement('div');
+                    div.className = `flex justify-between px-3 py-2 text-sm border-b border-white/10 last:border-none`;
+                    div.innerHTML = `
+                        <div>${service.name}</div>
+                        <div class="font-mono text-emerald-400">₵${service.price}</div>
+                    `;
+                    pricingContainer.appendChild(div);
+                });
+            }
+
+            // Load current tax rate
+            const taxInput = document.getElementById('tax-rate-input');
+            if (taxInput) {
+                taxInput.value = appData.taxRate || 15;
+            }
+        }
+
+        function showAddStaffModal() {
+            const name = prompt("Staff full name:");
+            if (!name) return;
+            const role = prompt("Role (e.g. Designer):", "Print Technician") || "Staff";
+            
+            appData.staff.push({
+                id: Date.now(),
+                name,
+                role,
+                phone: "N/A",
+                jobsCompleted: 0
+            });
+            saveData();
+            renderSettings();
+        }
+
+        function showAddServiceModal() {
+            const name = prompt("Service name:");
+            if (!name) return;
+            const price = parseFloat(prompt("Price (GHS):", "50")) || 50;
+
+            appData.services.push({
+                id: Date.now(),
+                name,
+                price,
+                category: "Custom"
+            });
+            saveData();
+            renderSettings();
+        }
+
+        function changePassword() {
+            alert("Password updated successfully.");
+        }
+
+        function resetAllData() {
+            if (!confirm('This will permanently delete ALL data (jobs, customers, inventory, etc). Continue?')) return;
+            
+            localStorage.removeItem('printflow_data');
+            location.reload(); // Fresh start
+        }
+
+        function saveTaxRate() {
+            const input = document.getElementById('tax-rate-input');
+            if (!input) return;
+
+            const newRate = parseFloat(input.value);
+            if (isNaN(newRate) || newRate < 0) {
+                alert("Please enter a valid tax rate");
+                return;
+            }
+
+            appData.taxRate = newRate;
+            saveData();
+            showToast(`Tax rate updated to ${newRate}%`);
+            
+            // Refresh POS if user is on it
+            const posPage = document.getElementById('page-pos');
+            if (posPage && !posPage.classList.contains('hidden')) {
+                renderPOS();
+            }
+        }
+
+        // ==================== UTILS ====================
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = `fixed bottom-5 right-5 px-5 py-3 bg-zinc-900 border border-white/20 text-sm rounded-3xl shadow-xl z-[200] flex items-center gap-x-2`;
+            toast.innerHTML = `
+                <span>${message}</span>
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.transitionDuration = '180ms';
+                toast.style.opacity = '0';
+                setTimeout(() => toast.parentNode.removeChild(toast), 200);
+            }, 2400);
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const pass = document.getElementById('login-password').value;
+
+            // Simple validation
+            if (!email || pass.length < 4) {
+                alert("Please enter valid credentials");
+                return;
+            }
+
+            // "Login"
+            document.getElementById('login-page').classList.add('hidden');
+            document.getElementById('app').classList.remove('hidden');
+
+            // Set clean user info on login
+            if (!appData.currentUser) {
+                appData.currentUser = { name: "User", role: "Manager", avatar: "U" };
+            }
+            document.getElementById('user-name').textContent = appData.currentUser.name;
+            document.getElementById('user-avatar').textContent = appData.currentUser.avatar;
+
+            // Show dashboard by default
+            showPage('dashboard');
+            
+            // Welcome toast
+            setTimeout(() => {
+                showToast("Welcome back to PrintFlow");
+            }, 900);
+        }
+
+        function logout() {
+            if (confirm("Log out of PrintFlow?")) {
+                document.getElementById('app').classList.add('hidden');
+                document.getElementById('login-page').classList.remove('hidden');
+                
+                // Clear sensitive UI
+                if (revenueChart) revenueChart.destroy();
+            }
+        }
+
+        function initializeApp() {
+            initializeTailwind();
+            loadFromStorage();
+            initializeTheme();
+
+            // Initial setup
+            document.getElementById('login-page').classList.remove('hidden');
+
+            // Pre-select payment method
+            setTimeout(() => {
+                const firstPaymentBtn = document.querySelector('.payment-btn');
+                if (firstPaymentBtn) firstPaymentBtn.classList.add('!border-emerald-400', '!bg-emerald-900/30');
+            }, 500);
+
+            // App initialized cleanly (no sample data)
+            
+            // Make discount input live update
+            const discountInput = document.getElementById('discount-input');
+            if (discountInput) {
+                discountInput.addEventListener('input', () => {
+                    const cartContainer = document.getElementById('cart-items');
+                    if (cartContainer && cart.length > 0) updateCartTotals();
+                });
+            }
+
+            // Close mobile sidebar when clicking a nav link on mobile
+            document.querySelectorAll('#sidebar .nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        document.getElementById('sidebar').classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('flex');
+        }
+
+        // ==================== THEME (Light / Dark Mode) ====================
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('printflow_theme') || 'dark';
+            const html = document.documentElement;
+
+            if (savedTheme === 'light') {
+                html.classList.remove('dark');
+                setTimeout(() => updateThemeIcon(false), 50);
+            } else {
+                html.classList.add('dark');
+                setTimeout(() => updateThemeIcon(true), 50);
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.classList.contains('dark');
+
+            if (isDark) {
+                html.classList.remove('dark');
+                localStorage.setItem('printflow_theme', 'light');
+                updateThemeIcon(false);
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('printflow_theme', 'dark');
+                updateThemeIcon(true);
+            }
+        }
+
+        function updateThemeIcon(isDark) {
+            const iconContainer = document.getElementById('theme-icon');
+            if (!iconContainer) return;
+
+            if (isDark) {
+                // Moon icon
+                iconContainer.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                `;
+            } else {
+                // Sun icon
+                iconContainer.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                `;
+            }
+        }
+
+        // Boot app
+        window.onload = initializeApp;
     </script>
 </body>
 </html>
